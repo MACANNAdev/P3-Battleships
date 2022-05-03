@@ -38,3 +38,30 @@ class Board:
                 self.ships.append((x, y))
                 if self.user =="player":
                     self.board[x] [y]= "@"
+
+
+def random_point(size):
+    """
+    helper function to rerturn random interger between 0 and size
+    """
+    return randint(0, size -1)
+
+def valid_cooardinates(x , y, board):
+    """
+    make sure guess is within board and has not been addeed to guess list []
+    """
+
+
+def populate_board(board):
+    """
+    same as guess
+    computer reandom rpw + random column
+    """
+
+
+def make_guess(board):
+    """
+    computer reandom rpw + random column
+    player prompt for input
+    """
+def play_game(computer_board, player_board):
