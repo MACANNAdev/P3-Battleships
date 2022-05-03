@@ -15,10 +15,17 @@ class Board:
         self.ships = []    
 
     def print(self):
+        """
+        creates a two dimesional array from list's
+        """
         for row in self.board:
             print(" ".join(row))
         
     def guess(self, x, y):
+        """
+
+        x= row and y = column
+        """
         self.guesses.append((x, y))
         self.board[x][y]= "X"
 
@@ -39,7 +46,7 @@ class Board:
 
 def random_point(size):
     """
-    helper function to rerturn random interger between 0 and size
+    helper function to return random interger between 0 and size
     """
     return randint(0, size -1)
 
@@ -51,16 +58,25 @@ def valid_cooardinates(x , y, board):
 
 def populate_board(board):
     """
-    same as guess
-    computer reandom rpw + random column
+     place ship in random row + random column
     """
-
+    random_row = random_point(board.size)
+    random_col= random_point(board.size)
+    
+    board.board[random_row][random_col]= "@"
 
 def make_guess(board):
     """
     computer reandom rpw + random column
     player prompt for input
     """
+   
+
+        
+
+    
+        
+
 def play_game(computer_board, player_board):
     """
     """
@@ -81,6 +97,7 @@ def new_game():
     player_board = Board(size, num_ships, player_name, user= "player")
 
     for _ in range(num_ships):
+     
         populate_board(player_board)
         populate_board(computer_board)
 
