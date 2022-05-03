@@ -65,3 +65,27 @@ def make_guess(board):
     player prompt for input
     """
 def play_game(computer_board, player_board):
+
+
+def new_game():
+
+    size = 10
+    num_ships = 4
+    scores["computer"] = 0
+    scores["player"] = 0
+    print("-" *35)
+    print("Welcome to Battleships!")
+    print("-" *35)
+    player_name = input("Please enter your name \n")
+    print("-" *35)
+
+    computer_board = Board(size, num_ships, "Computer", user= "computer")
+    player_board = Board(size, num_ships, player_name, user= "player")
+
+    for _ in range(num_ships):
+        populate_board(player_board)
+        populate_board(computer_board)
+
+    play_game(computer_board, player_board)
+
+new_game()
