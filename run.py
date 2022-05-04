@@ -54,8 +54,6 @@ def valid_cooardinates(x , y, board):
     """
     make sure guess is within board and has not been addeed to guess list []
     """
-
-
 def populate_board(board):
     """
      place ship in random row + random column
@@ -69,7 +67,6 @@ def populate_board(board):
     else:
         board.ships.append((random_row, random_col))
 
-
 def make_guess(board):
     """
     computer reandom rpw + random column
@@ -78,17 +75,13 @@ def make_guess(board):
     if board.user == "player":
         x = int(input("Enter row"))
         y = int(input("Enter column"))
-        board.guess(board, x, y)
-    else:
+        board.guess(x, y)
+        
+    elif board.user== "computer":
         x = random_point(board.size)
         y = random_point(board.size)
-        board.guess(board, x, y)
-   
-
-        
-
-    
-        
+        board.guess(x, y)
+  
 
 def play_game(computer_board, player_board):
     """
@@ -96,8 +89,11 @@ def play_game(computer_board, player_board):
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
-
+    make_guess(player_board)
+    make_guess(computer_board)
     
+    
+
 def new_game():
 
     size = 10
@@ -112,11 +108,12 @@ def new_game():
 
     computer_board = Board(size, num_ships, "Computer", user= "computer")
     player_board = Board(size, num_ships, player_name, user= "player")
-
+    
     for _ in range(num_ships):
      
         populate_board(player_board)
         populate_board(computer_board)
+    
 
     play_game(computer_board, player_board)
 
