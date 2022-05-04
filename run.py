@@ -63,7 +63,12 @@ def populate_board(board):
     random_row = random_point(board.size)
     random_col= random_point(board.size)
     
-    board.board[random_row][random_col]= "@"
+    if board.user ==  "player":
+        board.ships.append((random_row, random_col))
+        board.board[random_row][random_col]= "@"
+    else:
+        board.ships.append((random_row, random_col))
+
 
 def make_guess(board):
     """
@@ -88,7 +93,11 @@ def make_guess(board):
 def play_game(computer_board, player_board):
     """
     """
+    print("Game initializing")
+    print(player_board.print())
+    print(computer_board.print())
 
+    
 def new_game():
 
     size = 10
