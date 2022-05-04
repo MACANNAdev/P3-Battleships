@@ -70,9 +70,9 @@ def make_guess(board):
     computer reandom rpw + random column
     player prompt for input
     """
-    if board.user = "player":
-        x = input("Enter row")
-        y = input("Enter column")
+    if board.user == "player":
+        x = int(input("Enter row"))
+        y = int(input("Enter column"))
         board.guess(board, x, y)
     else:
         x = random_point(board.size)
