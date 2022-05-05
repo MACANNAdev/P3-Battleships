@@ -35,13 +35,6 @@ class Board:
         else:
             return "Miss"
         
-    def add_ship(self, x, y, user= "computer"):
-        if len(self.ships) >= self.num_ships:
-            print("Error: you cannot add more ships!")
-        else:
-            self.ships.append((x, y))
-            if self.user =="player":
-                self.board[x] [y]= "@"    
 
 
 def random_point(size):
@@ -72,15 +65,21 @@ def make_guess(board):
     computer reandom rpw + random column
     player prompt for input
     """
-    if board.user == "player":
+    if board.user == "computer":
+        
         x = int(input("Enter row \n"))
         y = int(input("Enter column \n"))
         board.guess(x, y)
+        print(f'players guesses row {x} column {y}')
+        print(board.guess(x, y))
         
-    elif board.user == "computer":
+    elif board.user == "player":
+        
         x = random_point(board.size)
         y = random_point(board.size)
         board.guess(x, y)
+        print(f'players guesses row {x} column {y}')
+        print(board.guess(x, y))
   
 
 def play_game(computer_board, player_board):
@@ -89,14 +88,19 @@ def play_game(computer_board, player_board):
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
-    make_guess(player_board)
+   
     make_guess(computer_board)
+    
+    make_guess(player_board)
+
+    print(player_board.print())
+    print(computer_board.print())
     
     
 
 def new_game():
 
-    size = 10
+    size = 5
     num_ships = 4
     scores["computer"] = 0
     scores["player"] = 0
