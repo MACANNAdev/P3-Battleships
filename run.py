@@ -73,11 +73,11 @@ def make_guess(board):
     player prompt for input
     """
     if board.user == "player":
-        x = int(input("Enter row"))
-        y = int(input("Enter column"))
+        x = int(input("Enter row \n"))
+        y = int(input("Enter column \n"))
         board.guess(x, y)
         
-    elif board.user== "computer":
+    elif board.user == "computer":
         x = random_point(board.size)
         y = random_point(board.size)
         board.guess(x, y)
