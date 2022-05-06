@@ -18,6 +18,8 @@ class Board:
         """
         for row in self.board:
             print(" ".join(row))
+        print(self.name)   
+        return ""
         
     def guess(self, x, y):
         """
@@ -46,9 +48,11 @@ class Board:
 
 
 def random_point(size):
+
     """
     helper function to return random interger between 0 and size
     """
+
     return randint(0, size -1)
 
 
@@ -66,7 +70,7 @@ def populate_board(board):
         board.ships.append((random_row, random_col))
 
 def make_guess(board):
-    print(board.user)
+    
     if board.user == "computer":  
 
         while True:

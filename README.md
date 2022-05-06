@@ -28,17 +28,15 @@ Battleships is a
 
 
     
-    
-- ### 
 
     
 ## Features
 
 
-
 - ### Existing Features
 
-- Timer- The timer has tow purposes, the first is to limit the time the user has to finish the game which creates a challenge and the second is that it is used to generate the users score.
+- Random board generation
+<img src="images/random-board.png">
 - Flip counter lets the user know how many flips it takes them to completet the game, this also contributes to the score.
 - Play button- The game will not start until the play button is pressed.
 - Game over- When the timer run out the game is over.
