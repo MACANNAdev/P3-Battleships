@@ -1,8 +1,5 @@
 from random import randint
 
-scores = {"computer" : 0, "player": 0}
-
-
 class Board:
 
     def __init__(self, size,  num_ships, name, user):
@@ -12,7 +9,8 @@ class Board:
         self.size = size
         self.board = [[ "." for x in range(size)] for y in range(size)]
         self.guesses = []
-        self.ships = []    
+        self.ships = []  
+        self.hits = []  
 
     def print(self):
         """
@@ -31,10 +29,10 @@ class Board:
 
         if (x, y) in self.ships:
             self.board[x][y] = "*"
+            self.hits.append("H")
             return "Hit"
         else:
             return "Miss"
-        
 
 
 def random_point(size):
@@ -44,9 +42,9 @@ def random_point(size):
     return randint(0, size -1)
 
 def valid_cooardinates(x , y, board):
-    """
-    make sure guess is within board and has not been addeed to guess list []
-    """
+   """
+   make sure guess is within board and has not been added to guess list []
+   """
 def populate_board(board):
     """
      place ship in random row + random column
@@ -78,7 +76,7 @@ def make_guess(board):
         x = random_point(board.size)
         y = random_point(board.size)
         board.guess(x, y)
-        print(f'players guesses row {x} column {y}')
+        print(f'computer guesses row {x} column {y}')
         print(board.guess(x, y))
   
 
@@ -88,22 +86,30 @@ def play_game(computer_board, player_board):
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
-   
-    make_guess(computer_board)
-    
-    make_guess(player_board)
 
-    print(player_board.print())
-    print(computer_board.print())
+    while game_over(computer_board, player_board):
+   
+        make_guess(computer_board)
+        make_guess(player_board)
+
+        print(player_board.print())
+        
+        print(player_board.hits)
+        
+        print(computer_board.print())
+        print(computer_board.hits)
     
-    
+def game_over(computer_board, player_board):
+    if len(computer_board.hits) == 8 or len(player_board.hits) == 8:
+        return False
+    else:
+        return True
+
 
 def new_game():
 
     size = 5
     num_ships = 4
-    scores["computer"] = 0
-    scores["player"] = 0
     print("-" *35)
     print("Welcome to Battleships!")
     print("-" *35)
