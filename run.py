@@ -7,10 +7,10 @@ class Board:
         self.name = name
         self.user = user
         self.size = size
-        self.board = [[ "." for x in range(size)] for y in range(size)]
+        self.board = [["." for x in range(size)] for y in range(size)]
         self.guesses = []
-        self.ships = []  
-        self.hits = []  
+        self.ships = []
+        self.hits = []
 
     def print(self):
         """
@@ -24,8 +24,13 @@ class Board:
 
         x= row and y = column
         """
+        if (x, y) in self.guesses:
+            print("Already guessed this location try again")
+
         self.guesses.append((x, y))
-        self.board[x][y]= "X"
+        print(self.guesses)
+        if (x, y) in self.guesses:
+            self.board[x][y] = "X"
 
         if (x, y) in self.ships:
             self.board[x][y] = "*"
@@ -33,6 +38,17 @@ class Board:
             return "Hit"
         else:
             return "Miss"
+    
+    def already_guessed(self, x, y):
+        if (x, y) in self.guesses:
+            return True
+        else:
+            return False
+
+        
+
+        
+            
 
 
 def random_point(size):
@@ -59,17 +75,43 @@ def populate_board(board):
         board.ships.append((random_row, random_col))
 
 def make_guess(board):
-    """
-    computer reandom rpw + random column
-    player prompt for input
-    """
-    if board.user == "computer":
-        
-        x = int(input("Enter row \n"))
-        y = int(input("Enter column \n"))
-        board.guess(x, y)
-        print(f'players guesses row {x} column {y}')
-        print(board.guess(x, y))
+    print(board.user)
+    if board.user == "computer":  
+
+        while True:
+            while True:
+                try:
+                    x = int(input("Enter row \n"))
+                except ValueError:
+                    print("enter a number between 0-4")
+                    continue
+                if x >= 5:
+                    print("Out of bounds must be within 0-4")
+                    continue
+                else:
+                    break
+
+            while True:
+                try:
+                    y = int(input("Enter column \n"))
+                except ValueError:
+                    print("enter a number between 0-4")
+                    continue
+                if y >= 5:
+                    print("Out of bounds must be within 0-4")
+                    continue
+                else:
+                    break
+
+            if not board.already_guessed(x, y):
+                board.guess(x, y)
+                print(f'players guesses row {x} column {y}')
+                print(board.guess(x, y))
+                break
+            else:
+                print(f'You have already entered co-oridinates: {x}, {y}')
+                print('Try again, numbers from 0-4')
+                continue
         
     elif board.user == "player":
         
@@ -86,6 +128,7 @@ def play_game(computer_board, player_board):
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
+    print(computer_board.guesses)
 
     while game_over(computer_board, player_board):
    
@@ -116,15 +159,15 @@ def new_game():
     player_name = input("Please enter your name \n")
     print("-" *35)
 
-    computer_board = Board(size, num_ships, "Computer", user= "computer")
-    player_board = Board(size, num_ships, player_name, user= "player")
-    
+    computer_board = Board(size, num_ships, "Computer", user="computer")
+    player_board = Board(size, num_ships, player_name, user="player")
+
     for _ in range(num_ships):
-     
+
         populate_board(player_board)
         populate_board(computer_board)
-    
 
     play_game(computer_board, player_board)
+
 
 new_game()
