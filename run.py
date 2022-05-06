@@ -61,7 +61,7 @@ def populate_board(board):
      place ship in random row + random column
     """
     random_row = random_point(board.size)
-    random_col= random_point(board.size)
+    random_col = random_point(board.size)
     
     if board.user ==  "player":
         board.ships.append((random_row, random_col))
@@ -80,7 +80,7 @@ def make_guess(board):
                 except ValueError:
                     print("enter a number between 0-4")
                     continue
-                if x >= 5:
+                if x >= 5 or x <= -1:
                     print("Out of bounds must be within 0-4")
                     continue
                 else:
@@ -92,7 +92,7 @@ def make_guess(board):
                 except ValueError:
                     print("enter a number between 0-4")
                     continue
-                if y >= 5:
+                if y >= 5 or y <= -1:
                     print("Out of bounds must be within 0-4")
                     continue
                 else:

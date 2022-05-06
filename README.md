@@ -36,7 +36,10 @@ Battleships is a
 - ### Existing Features
 
 - Random board generation
-<img src="images/random-board.png">
+
+
+- <img src="images/random-board.png">
+
 - Flip counter lets the user know how many flips it takes them to completet the game, this also contributes to the score.
 - Play button- The game will not start until the play button is pressed.
 - Game over- When the timer run out the game is over.
@@ -51,16 +54,13 @@ Battleships is a
 -   [PYTHON](https://en.wikipedia.org/wiki/Python_(programming_language))
 
 ### Frameworks, Libraries & Programs Used
-
-
-1. [1001 FONTS:](https://www.1001fonts.com/)
-    - 
     
 
 1. [Git:](https://git-scm.com/)
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
+
     
 
 
