@@ -24,10 +24,10 @@ class Board:
 
         x= row and y = column
         """
-        
 
         self.guesses.append((x, y))
-        print(self.guesses)
+        
+
         if (x, y) in self.guesses:
             self.board[x][y] = "X"
 
@@ -43,11 +43,6 @@ class Board:
             return True
         else:
             return False
-
-        
-
-        
-            
 
 
 def random_point(size):
@@ -102,7 +97,6 @@ def make_guess(board):
             if not board.already_guessed(x, y):
                 board.guess(x, y)
                 print(f'players guesses row {x} column {y}')
-                print(board.guess(x, y))
                 break
             else:
                 print(f'You have already entered co-oridinates: {x}, {y}')
@@ -115,7 +109,7 @@ def make_guess(board):
         y = random_point(board.size)
         board.guess(x, y)
         print(f'computer guesses row {x} column {y}')
-        print(board.guess(x, y))
+        
   
 
 def play_game(computer_board, player_board):
@@ -124,7 +118,7 @@ def play_game(computer_board, player_board):
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
-    print(computer_board.guesses)
+   
 
     while game_over(computer_board, player_board):
    
