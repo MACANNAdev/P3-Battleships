@@ -24,8 +24,7 @@ class Board:
 
         x= row and y = column
         """
-        if (x, y) in self.guesses:
-            print("Already guessed this location try again")
+        
 
         self.guesses.append((x, y))
         print(self.guesses)
@@ -57,10 +56,7 @@ def random_point(size):
     """
     return randint(0, size -1)
 
-def valid_cooardinates(x , y, board):
-   """
-   make sure guess is within board and has not been added to guess list []
-   """
+
 def populate_board(board):
     """
      place ship in random row + random column
@@ -135,12 +131,9 @@ def play_game(computer_board, player_board):
         make_guess(computer_board)
         make_guess(player_board)
 
-        print(player_board.print())
-        
-        print(player_board.hits)
-        
+        print(player_board.print())        
         print(computer_board.print())
-        print(computer_board.hits)
+        
     
 def game_over(computer_board, player_board):
     if len(computer_board.hits) == 8 or len(player_board.hits) == 8:
@@ -154,7 +147,14 @@ def new_game():
     size = 5
     num_ships = 4
     print("-" *35)
-    print("Welcome to Battleships!")
+    print("WELCOME TO BATTLESHIPS!\n")
+    print("-" *35)
+    print('INSTRUCTIONS\n')
+    print("-" *35)
+    print("GUESS WHERE THE ENEMIES SHIPS ARE ")
+    print('THIS BOARD IS A GRID WITH DIMENSIONS OF 5x5 WITH FOUR SHIPS TO ATTACK')
+    print("CHOOSE A ROW AND COLUMN FROM THE NUMBERS BETWEEN 0-4")
+    print("SINK YOUR ENEMIES SHIPS BEFORE THEY SINK YOURS!")
     print("-" *35)
     player_name = input("Please enter your name \n")
     print("-" *35)
