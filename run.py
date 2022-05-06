@@ -90,7 +90,7 @@ def make_guess(board):
                 try:
                     y = int(input("Enter column \n"))
                 except ValueError:
-                    print("enter a number between 0-4")
+                    print("Enter a number between 0-4")
                     continue
                 if y >= 5 or y <= -1:
                     print("Out of bounds must be within 0-4")
