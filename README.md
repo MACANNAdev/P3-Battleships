@@ -8,12 +8,26 @@ Battleships is a
 ## How to play (UX)
 
 
-      1. Pick a target
+ This game is based on the classic battleship game.
 
-      2. 
+ The program generates two random boards, one for the player and one for
+  computer.
 
-      3. 
+ Both boards then also have the location of there ships randomly generated
+ with the computers ships not being revealed to the player
 
+ The player then inputs co-ordinates to guess the location of the computer's ship and the 
+ computer guesses through a randomly generated number.
+
+ If either player hits, the board will be updated with a * in the location the guess was made.
+ If either player missess, the board will be updated with a X in the location the guess was made.
+
+ when a player hits all the ships the player wins!!!
+
+
+
+
+    
     
 - ### 
 
