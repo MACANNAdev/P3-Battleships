@@ -1,5 +1,6 @@
 from random import randint
 
+
 class Board:
     """
     Creates a claass from which both boards are created
@@ -21,16 +22,16 @@ class Board:
         """
         for row in self.board:
             print(" ".join(row))
-        print(self.name)   
+        print(self.name)
         return ""
-        
+
     def guess(self, x, y):
         """
-        Processes whether their have been hits and if so updated the board and hits list
+        Processes whether their have been hits,updates the board and hits list
         x= row and y = column
         """
         self.guesses.append((x, y))
-        
+
         if (x, y) in self.guesses:
             self.board[x][y] = "X"
 
@@ -40,7 +41,7 @@ class Board:
             return "Hit"
         else:
             return "Miss"
-    
+
     def already_guessed(self, x, y):
         if (x, y) in self.guesses:
             return True
@@ -52,7 +53,7 @@ def random_point(size):
     """
     helper function to return random interger between 0 and size
     """
-    return randint(0, size -1)
+    return randint(0, size - 1)
 
 
 def populate_board(board):
@@ -61,19 +62,19 @@ def populate_board(board):
     """
     random_row = random_point(board.size)
     random_col = random_point(board.size)
-    
-    if board.user ==  "player":
+    if board.user == "player":
         board.ships.append((random_row, random_col))
-        board.board[random_row][random_col]= "@"
+        board.board[random_row][random_col] = "@"
     else:
         board.ships.append((random_row, random_col))
+
 
 def make_guess(board):
     """
     Validates user input
     """
-    
-    if board.user == "computer":  
+
+    if board.user == "computer":
 
         while True:
             while True:
@@ -108,15 +109,12 @@ def make_guess(board):
                 print(f'You have already entered co-oridinates: {x}, {y}')
                 print('Try again, numbers from 0-4')
                 continue
-        
     elif board.user == "player":
-        
         x = random_point(board.size)
         y = random_point(board.size)
         board.guess(x, y)
         print(f'computer guesses row {x} column {y}')
-        
-  
+
 
 def play_game(computer_board, player_board):
     """
@@ -125,29 +123,26 @@ def play_game(computer_board, player_board):
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
-   
 
     while not game_over(computer_board, player_board):
-   
+
         make_guess(computer_board)
         make_guess(player_board)
 
-        print(player_board.print())          
+        print(player_board.print())
         print(computer_board.print())
-        
-       
         if game_over(computer_board, player_board):
             if len(player_board.hits) == 8:
                 print("COMPUTER WINS! \n")
             else:
-                 print(f'{player_board.name} WINS!')
+                print(f'{player_board.name} WINS!')
             break
-    
-    print("-" *35)
+
+    print("-" * 35)
     print("RESTARTING GAME PLEASE PLAY AGAIN!!!!")
     new_game()
-    
-    
+
+
 def game_over(computer_board, player_board):
     """
     Checks hits list to determine winner
@@ -161,23 +156,23 @@ def game_over(computer_board, player_board):
 
 def new_game():
     """
-    Starts new game 
+    Starts new game
     """
 
     size = 5
     num_ships = 4
-    print("-" *35)
+    print("-" * 35)
     print("WELCOME TO BATTLESHIPS!\n")
-    print("-" *35)
+    print("-" * 35)
     print('INSTRUCTIONS\n')
-    print("-" *35)
+    print("-" * 35)
     print("GUESS WHERE THE ENEMIES SHIPS ARE ")
-    print('THIS BOARD IS A GRID WITH DIMENSIONS OF 5x5 WITH FOUR SHIPS TO ATTACK')
+    print('THIS BOARD IS A GRID WITH DIMENSIONS OF 5x5 WITH 5 SHIPS TO ATTACK')
     print("CHOOSE A ROW AND COLUMN FROM THE NUMBERS BETWEEN 0-4")
     print("SINK YOUR ENEMIES SHIPS BEFORE THEY SINK YOURS!")
-    print("-" *35)
+    print("-" * 35)
     player_name = input("Please enter your name \n")
-    print("-" *35)
+    print("-" * 35)
 
     computer_board = Board(size, num_ships, "Computer", user="computer")
     player_board = Board(size, num_ships, player_name, user="player")
