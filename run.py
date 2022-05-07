@@ -1,6 +1,9 @@
 from random import randint
 
 class Board:
+    """
+    Creates a claass from which both boards are created
+    """
 
     def __init__(self, size,  num_ships, name, user):
         self.num_ships = num_ships
@@ -14,7 +17,7 @@ class Board:
 
     def print(self):
         """
-        creates a two dimesional array from list's
+        Creates a two dimesional array from list's and prints it each round
         """
         for row in self.board:
             print(" ".join(row))
@@ -23,13 +26,11 @@ class Board:
         
     def guess(self, x, y):
         """
-
+        Processes whether their have been hits and if so updated the board and hits list
         x= row and y = column
         """
-
         self.guesses.append((x, y))
         
-
         if (x, y) in self.guesses:
             self.board[x][y] = "X"
 
@@ -48,11 +49,9 @@ class Board:
 
 
 def random_point(size):
-
     """
     helper function to return random interger between 0 and size
     """
-
     return randint(0, size -1)
 
 
@@ -70,6 +69,9 @@ def populate_board(board):
         board.ships.append((random_row, random_col))
 
 def make_guess(board):
+    """
+    Validates user input
+    """
     
     if board.user == "computer":  
 
@@ -118,29 +120,49 @@ def make_guess(board):
 
 def play_game(computer_board, player_board):
     """
+    Plays game and print boards until game_over is True
     """
     print("Game initializing")
     print(player_board.print())
     print(computer_board.print())
    
 
-    while game_over(computer_board, player_board):
+    while not game_over(computer_board, player_board):
    
         make_guess(computer_board)
         make_guess(player_board)
 
-        print(player_board.print())        
+        print(player_board.print())          
         print(computer_board.print())
         
+       
+        if game_over(computer_board, player_board):
+            if len(player_board.hits) == 8:
+                print("COMPUTER WINS! \n")
+            else:
+                 print(f'{player_board.name} WINS!')
+            break
+    
+    print("-" *35)
+    print("RESTARTING GAME PLEASE PLAY AGAIN!!!!")
+    new_game()
+    
     
 def game_over(computer_board, player_board):
+    """
+    Checks hits list to determine winner
+    """
+
     if len(computer_board.hits) == 8 or len(player_board.hits) == 8:
-        return False
-    else:
         return True
+    else:
+        return False
 
 
 def new_game():
+    """
+    Starts new game 
+    """
 
     size = 5
     num_ships = 4
