@@ -119,9 +119,11 @@ This project was deployed using Code Institute's mock terminal for Heroku:
 
 ### Code
 
--  Code institute project scope video 
+-  Code institute project scope video code was used as framework for the code I built
+
+-  Code institute project scope read me
 
 
 ### Acknowledgements
 
--   My 
+-   The tutoring team and Python Tutor!
